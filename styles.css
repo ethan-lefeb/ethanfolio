@@ -214,3 +214,35 @@ footer{
   font-size: 13px;
   text-align:center;
 }
+
+
+/* Project demo media */
+.media{
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+}
+.demo{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.2);
+}
+.media-note{
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.media-note code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.02);
+  color: var(--text);
+}
