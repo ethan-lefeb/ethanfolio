@@ -75,6 +75,10 @@ a:hover{ text-decoration: underline; }
   background: rgba(122,162,255,.08);
   text-decoration:none;
 }
+.pill.active{
+  background: rgba(122,162,255,.10);
+  border-color: rgba(122,162,255,.35);
+}
 
 .hero{
   margin-top: 18px;
@@ -141,6 +145,13 @@ a:hover{ text-decoration: underline; }
   background: var(--panel);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
+}
+
+/* Vertical stack container (used for multiple cards in one grid column) */
+.stack{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 .card h2{ margin: 0 0 10px; font-size: 18px; letter-spacing: -.2px; }
 .card h3{ margin: 18px 0 8px; font-size: 15px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
