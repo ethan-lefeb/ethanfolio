@@ -85,7 +85,36 @@ a:hover{ text-decoration: underline; }
   box-shadow: var(--shadow);
 }
 .hero h1{ margin: 0 0 6px; font-size: 40px; line-height: 1.1; letter-spacing: -.6px; }
-.hero p{ margin: 10px 0 0; color: var(--muted); max-width: 70ch; }
+.hero p{ margin: 10px 0 0; color: var(--muted); max-width: 78ch; }
+
+/* Quick highlights under the hero paragraph */
+.highlights{
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  max-width: 90ch;
+}
+@media (max-width: 920px){
+  .highlights{ grid-template-columns: 1fr; }
+}
+.highlights li{
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.02);
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+.highlights b{ color: var(--text); font-weight: 650; }
+
+/* Small niceties for project pages */
+.lede{ margin: 6px 0 0; color: var(--muted); max-width: 78ch; }
+.bullets{ margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
+.bullets li{ margin: 6px 0; }
 
 .meta{
   margin-top: 14px;
