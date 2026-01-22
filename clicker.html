@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clicker | Ethan LeFebvre</title>
+  <meta name="description" content="A tiny incremental game: click for bits, earn bytes, buy auto-clickers, and upgrade them." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="clicker.css" />
+</head>
+<body>
+  <div class="wrap clicker-wrap">
+    <header class="clicker-header">
+      <a class="btn secondary" href="index.html">← Back</a>
+      <div class="clicker-title">
+        <h1>Clicker</h1>
+        <p>Click for bits. Every 100 bits also becomes 1 byte. Buy auto-clickers with bytes, and upgrade them with bits.</p>
+      </div>
+    </header>
+
+    <main class="clicker-card">
+      <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+      <section class="stats">
+        <div class="stat">
+          <div class="label">Bits</div>
+          <div class="value" id="bitsValue">0</div>
+        </div>
+        <div class="stat">
+          <div class="label">Bytes</div>
+          <div class="value" id="bytesValue">0</div>
+        </div>
+        <div class="stat">
+          <div class="label">Auto-clickers</div>
+          <div class="value" id="clickersValue">0</div>
+        </div>
+        <div class="stat">
+          <div class="label">Upgrade level</div>
+          <div class="value" id="upgradeValue">0</div>
+        </div>
+        <div class="stat wide">
+          <div class="label">Production</div>
+          <div class="value"><span id="bpsValue">0</span> bits/sec</div>
+        </div>
+      </section>
+
+      <section class="play">
+        <button id="clickBtn" class="circle" type="button" aria-label="Click to gain 1 bit">
+          <span>Click</span>
+          <small>+1 bit</small>
+        </button>
+      </section>
+
+      <section class="shop">
+        <div class="shop-card">
+          <h2>Auto-clickers</h2>
+          <p>Each auto-clicker produces <strong><span id="ratePerClicker">1</span></strong> bit/sec.</p>
+          <div class="buyrow">
+            <button id="buyClickerBtn" class="btn" type="button">Buy auto-clicker</button>
+            <div class="cost">Cost: <strong><span id="clickerCost">1</span></strong> byte(s)</div>
+          </div>
+        </div>
+
+        <div class="shop-card">
+          <h2>Upgrades</h2>
+          <p>Upgrades increase the bits/sec produced by <em>each</em> auto-clicker.</p>
+          <div class="buyrow">
+            <button id="buyUpgradeBtn" class="btn" type="button">Upgrade auto-clickers</button>
+            <div class="cost">Cost: <strong><span id="upgradeCost">10</span></strong> bit(s)</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="footerline">
+        <div class="footgroup">
+          <button id="resetBtn" class="btn secondary" type="button">Reset save</button>
+          <span class="muted footnote">Clears your cookie save.</span>
+        </div>
+
+        <span class="muted center-note">Saved in cookies. Offline progress is applied when you return.</span>
+
+        <div class="footgroup right">
+          <a class="btn secondary" href="clicker-how.html">How it works</a>
+          <span class="muted footnote">See how I made this!</span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="clicker.js"></script>
+</body>
+</html>

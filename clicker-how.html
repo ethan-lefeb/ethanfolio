@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How this Clicker works | Ethan LeFebvre</title>
+  <meta name="description" content="A quick breakdown of how the Clicker mini-game works, including progression, saves, and offline gains." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="clicker.css" />
+  <style>
+    .how-card{padding: 18px 18px 14px;}
+    .how-card h2{margin-top: 18px;}
+    .how-card code{font-size: .95em;}
+    .how-grid{display:grid; gap: 12px; grid-template-columns: 1fr 1fr;}
+    .how-box{border: 1px solid var(--line); border-radius: 18px; padding: 14px; background: rgba(255,255,255,.02);}
+    @media (max-width: 820px){ .how-grid{grid-template-columns: 1fr;} }
+  </style>
+</head>
+<body>
+  <div class="wrap clicker-wrap">
+    <header class="clicker-header">
+      <a class="btn secondary" href="clicker.html">← Back to the game</a>
+      <div class="clicker-title">
+        <h1>How it works</h1>
+        <p>This is a tiny, self-contained incremental game built with plain HTML/CSS/JS so it can live on GitHub Pages without any backend.</p>
+      </div>
+    </header>
+
+    <main class="clicker-card how-card">
+      <div class="how-grid">
+        <div class="how-box">
+          <h2>Core resources</h2>
+          <p><strong>Bits</strong> are your main number. Clicking the big circle adds <code>+1</code> bit.</p>
+          <p><strong>Bytes</strong> are earned as milestones: whenever your total bits crosses a multiple of <code>100</code>, you gain <code>+1</code> byte (your bits do <em>not</em> reset).</p>
+        </div>
+
+        <div class="how-box">
+          <h2>Two upgrade paths</h2>
+          <p><strong>Auto-clickers</strong> are bought with bytes and generate bits every second.</p>
+          <p><strong>Upgrades</strong> are bought with bits and increase production for <em>each</em> auto-clicker.</p>
+        </div>
+      </div>
+
+      <h2>Costs and scaling</h2>
+      <p>Both progression paths get more expensive on purpose, but they scale separately:</p>
+      <ul>
+        <li><strong>Auto-clickers</strong>: cost doubles each time you buy one (1, 2, 4, 8, … bytes).</li>
+        <li><strong>Upgrades</strong>: cost doubles each level (10, 20, 40, 80, … bits).</li>
+      </ul>
+
+      <h2>Production math</h2>
+      <p>The game computes your current production like this:</p>
+      <ul>
+        <li><code>ratePerClicker = 1 + upgradeLevel</code></li>
+        <li><code>bitsPerSecond = clickersOwned * ratePerClicker</code></li>
+      </ul>
+      <p>Every second, it adds <code>bitsPerSecond</code> to your bit total, and awards bytes if you crossed any 100-bit milestones.</p>
+
+      <h2>Saving without a server</h2>
+      <p>Because GitHub Pages is static hosting, the save data is stored in a cookie. The save includes:</p>
+      <ul>
+        <li>bits, bytes</li>
+        <li>auto-clickers owned</li>
+        <li>upgrade level</li>
+        <li><code>lastOnline</code> timestamp</li>
+      </ul>
+
+      <h2>Offline progression</h2>
+      <p>The game updates <code>lastOnline</code> periodically (at least every 5 minutes, plus when you leave the tab). When you come back, it:</p>
+      <ol>
+        <li>Computes how many seconds you were away.</li>
+        <li>Calculates the bits you would have earned from auto-clickers during that time.</li>
+        <li>Adds those bits instantly, awards any milestone bytes, and shows a small notification.</li>
+      </ol>
+
+      <h2>Where to look in the code</h2>
+      <ul>
+        <li><code>clicker.html</code>: page layout and UI elements</li>
+        <li><code>clicker.css</code>: centered layout and the circular click button</li>
+        <li><code>clicker.js</code>: state, costs, saving, and offline progression</li>
+      </ul>
+
+      <section class="footerline" style="border-top:none; padding-top: 10px; margin-top: 10px;">
+        <a class="btn secondary" href="clicker.html">Back to the game</a>
+        <span class="muted">Tip: open DevTools to watch the cookie update and see the state change live.</span>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

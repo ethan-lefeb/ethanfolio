@@ -56,6 +56,17 @@
       </div>
     </section>
 
+<section class="card" style="margin-top: 16px;">
+  <h2>Backend notes</h2>
+  <ul>
+    <li><strong>Data model:</strong> user profiles, plants, care schedules/reminders, social graph (friends/requests), and activity/feed events; persisted via Firestore collections (per-user scoped) with local caching/persistence where applicable.</li>
+    <li><strong>API surface:</strong> Firebase Auth for identity, Firestore for CRUD operations and real-time updates, FCM for notifications, and external REST integrations via Retrofit/OkHttp (e.g., Plant.id).</li>
+    <li><strong>Failure modes:</strong> offline-first behavior (cached reads), retries/backoff for network calls, idempotent writes where possible, and conflict avoidance via server timestamps and document-level updates.</li>
+    <li><strong>Testing:</strong> unit tests for repository/data-layer logic; UI tests where relevant (expand coverage as time allows).</li>
+    <li><strong>Deployed / run:</strong> runs as an Android app with Firebase as the backend platform; local dev uses Firebase project configuration and can be exercised via seeded Firestore data and emulator-backed flows when configured.</li>
+  </ul>
+</section>
+
     <footer>Hosted on GitHub Pages.</footer>
   </div>
 </body>
